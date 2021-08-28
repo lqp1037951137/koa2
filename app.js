@@ -13,13 +13,5 @@ app.use(resDataMiddleware)
 
 app.listen(8888)
 
-const WebSocket = require('ws')
-const wss = new WebSocket.Server({
-  port: 9998
-})
-wss.on('connection', client => {
-  client.on('message', msg => {
-    console.log('a'+msg);
-    client.send('hello socket')
-  })
-})
+const webSocketService = require('./service/web_socket_service')
+webSocketService.listen()

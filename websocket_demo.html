@@ -31,12 +31,17 @@
       ws.onmessage = msg => {
         console.log('接收到服务端发过来的数据');
         console.log(msg);
-        recv.innerHTML = msg.data
+        recv.innerHTML = ''+msg.data
 
       }
     }
     send.onclick = function () {
-      ws.send('hello socket from frontend')
+      ws.send(JSON.stringify({
+        action: 'fullScreen',
+        socketType: 'fullScreen',
+        chartName: 'trend',
+        value: true
+      }))
     }
   </script>
 </body>
